@@ -30,6 +30,12 @@ Reducir la opacidad (components/BotonAccion.tsx, líneas 77-79) no sería sufici
 
 ## P2
 
+1. En App.tsx, línea 24, se define la función `pedirOtraVez`, que es lo que ocurre al tocar el botón.
+2. En App.tsx, línea 69, la pantalla le pasa `pedirOtraVez` a la tarjeta en el prop `onPresionarBoton`.
+3. En components/TarjetaProducto.tsx, línea 46, la tarjeta le pasa al botón una función que llama a `onPresionarBoton` y le agrega el producto de esa tarjeta.
+4. En components/BotonAccion.tsx, línea 30, el botón le pasa esa función al `Pressable` en su `onPress`.
+5. Al presionar el botón se activa `pedirOtraVez` y se ejecuta la alerta en App.tsx, línea 25, que muestra "Pedido rápido: <producto>" en pantalla.
+
 ## P3
 
 ## P4
