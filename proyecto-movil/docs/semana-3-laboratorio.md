@@ -65,6 +65,14 @@ Reducir la opacidad (components/BotonAccion.tsx, líneas 77-79) no sería sufici
 
 ## P3
 
+El precio final se calcula en la función `calcularPrecioFinal` de utils/precios.ts, líneas 7-9, y la tarjeta solo la llama en components/TarjetaProducto.tsx, línea 41.
+
+La forma de escribir el precio se decide en App.tsx, líneas 10-14, con `simboloMoneda` y `formatearPrecio`. La tarjeta la recibe como prop en components/TarjetaProducto.tsx, línea 9.
+
+Si otra sede usa otra moneda, solo cambiaría App.tsx, línea 10, el `simboloMoneda`. No se toca ningún archivo de components.
+
+Si el cálculo o el formato estuvieran dentro de la tarjeta, se necesitaría cambiar components/TarjetaProducto.tsx para cada moneda, y eso es lo que el laboratorio pide evitar: la tarjeta debe funcionar sin modificar su archivo.
+
 ## P4
 
 En components/EncabezadoSeccion.tsx, línea 18, se revisa si el componente padre le pasa el prop `onVerTodo`. Si se cumple, se mostrará el enlace "Ver todo"; si no, no se dibuja nada.
