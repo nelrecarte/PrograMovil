@@ -34,6 +34,12 @@ Reducir la opacidad (components/BotonAccion.tsx, líneas 77-79) no sería sufici
 
 ## P4
 
+En components/EncabezadoSeccion.tsx, línea 18, se revisa si el componente padre le pasa el prop `onVerTodo`. Si se cumple, se mostrará el enlace "Ver todo"; si no, no se dibuja nada.
+
+El prop es de tipo `(() => void) | undefined` (línea 8): una función que no recibe nada y no devuelve nada, o nada si no se pasa.
+
+Es opcional porque no todas las secciones tendrán más elementos de los que ya se muestran. Por ejemplo, "Sus favoritos" y "Su pedido" no lo pasan, y por eso la línea 18 oculta el enlace.
+
 ## P5
 
 ## P6
