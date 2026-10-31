@@ -83,4 +83,17 @@ Es opcional porque no todas las secciones tendrán más elementos de los que ya 
 
 ## P5
 
+| Línea (App.tsx) | Función | Recibe | Devuelve |
+|---|---|---|---|
+| 12 | `formatearPrecio` | `precio: number` | `string` |
+| 16 | `verMenuCompleto` | nada | `void` |
+| 20 | `agregarAlPedido` | `producto: Producto` | `void` |
+| 24 | `pedirOtraVez` | `producto: Producto` | `void` |
+| 28 | `confirmarPedido` | nada | `void` |
+| 32 | `vaciarPedido` | nada | `void` |
+
+Las funciones están en App.tsx porque los componentes no saben toda la información requerida: no saben qué mensaje mostrar ni con qué moneda escribir el precio, eso lo decide la pantalla. Por ejemplo, la misma TarjetaProducto usa `agregarAlPedido` en el Menú del día (App.tsx, línea 57) y `pedirOtraVez` en Sus favoritos (App.tsx, línea 69); si la función estuviera dentro de la tarjeta, haría lo mismo en las dos secciones.
+
 ## P6
+
+Solo debería modificarse App.tsx: agregar una función nueva con el mensaje de la promoción y una sección nueva con las tarjetas, pasando `textoBoton="Aprovechar"` y la función nueva en `onPresionarBoton`. Es lo mismo que hace Sus favoritos con "Pedir otra vez" (App.tsx, líneas 64-71). TarjetaProducto ya recibe esos dos props (components/TarjetaProducto.tsx, líneas 10-11), así que no hay que cambiar ningún archivo de components.
