@@ -2,9 +2,36 @@
 
 ## E1
 
+Cambio: data/menu.ts, línea 7, `'bebida'` → `'bebidas'`.
+
+```
+Type '"bebidas"' is not assignable to type 'Categoria'. Did you mean '"bebida"'?
+menu.ts(8, 3): The expected type comes from property 'categoria' which is declared here on type 'Producto'
+```
+
+Explicación: el error aparece en data/menu.ts, línea 7. La lista de categorías ya está definida en types/menu.ts, línea 1, y es singular: solo acepta `'bebida'`, `'comida'` y `'postre'`, por eso `'bebidas'` no es válido.
+
 ## E2
 
+Cambio: data/menu.ts, se eliminó `precio: 35,` (línea 8) del Café americano.
+
+```
+Property 'precio' is missing in type '{ id: string; nombre: string; categoria: "bebida"; disponibilidad: "disponible"; }' but required in type 'Producto'.
+menu.ts(9, 3): 'precio' is declared here.
+```
+
+Explicación: `precio` es requerido porque no es opcional, no tiene el `?` (types/menu.ts, línea 9). En cambio, `esNuevo` sí tiene el `?` (types/menu.ts, línea 12), por eso al eliminarlo no aparece ningún error.
+
 ## E3
+
+Cambio: App.tsx, se comentó `formatearPrecio={formatearPrecio}` (línea 56) de la TarjetaProducto del Menú del día.
+
+```
+Property 'formatearPrecio' is missing in type '{ key: string; producto: Producto; onPresionarBoton: (producto: Producto) => void; }' but required in type 'TarjetaProductoProps'.
+TarjetaProducto.tsx(9, 3): 'formatearPrecio' is declared here.
+```
+
+Explicación: falta un prop de TarjetaProducto que es requerido, `formatearPrecio` (components/TarjetaProducto.tsx, línea 9). Lo hice requerido porque, si no lo fuera y una pantalla no lo pasara, la tarjeta no podría escribir el precio (components/TarjetaProducto.tsx, línea 41).
 
 ## P1
 
